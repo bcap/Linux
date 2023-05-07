@@ -170,4 +170,4 @@ bindkey -M isearch " " magic-space # normal space during searches
 # Init commands
 # #################
 
-mount -t debugfs nodev /sys/kernel/debug
+source ~/init.sh

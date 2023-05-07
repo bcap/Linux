@@ -17,3 +17,4 @@ RUN apk add | grep '(no such package)' | awk '{print $1}' | xargs apk del -f
 
 # zshrc with personal preferences + startups commands
 COPY zshrc /root/.zshrc
+COPY init.sh /root/init.sh
