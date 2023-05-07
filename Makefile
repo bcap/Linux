@@ -4,7 +4,7 @@ build:
 shell:
 	@( \
 		docker start linux-shell 2> /dev/null && \
-		echo "=> re-attached to a previously stopped container. Use make clean && make shell to log into a fresh container" \
+		echo "=> re-attached to a previously stopped container. Use make clean-shell to log into a fresh container" \
 	) || ( \
 		echo "=> container not present, building a new one" && \
 		$(MAKE) build && \
@@ -14,5 +14,8 @@ shell:
 	@docker attach linux-shell
 
 clean:
-	@docker container rm linux-shell || true
-	@docker image rm bcap/linux/alpine || true
+	@docker kill linux-shell > /dev/null 2>&1 && echo container linux-shell killed || true
+	@docker container rm linux-shell > /dev/null 2>&1 && echo container linux-shell removed || true
+	@docker image rm bcap/linux/alpine > /dev/null 2>&1 && echo image bcap/linux/alpine removed || true
+
+clean-shell: clean shell

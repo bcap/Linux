@@ -4,6 +4,8 @@ Utility to run a customized linux shell through docker. Used mostly for experime
 
 Commands:
 
-* `make shell` will start a container if there is none and log into it. Subsequent calls to `make shell` will log you back to the same container
+* `make shell` will start a container if there is none and log into it. Subsequent calls to `make shell` will log you back to the same container. Use `make clean-shell` to always log to a fresh container.
 
-* `make clean` will remove the container. The next call to `make shell` will start a fresh container
+* `make clean` will stop the container (if running), remove the container and image. This will not remove build caches though
+
+* `make clean-shell` will always log into a fresh container. It is the combination of the `clean` and `shell` targets
